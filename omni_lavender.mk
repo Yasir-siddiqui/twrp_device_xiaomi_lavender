@@ -22,18 +22,17 @@ $(call inherit-product, build/target/product/embedded.mk)
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/omni/config/common.mk)
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    sys.usb.controller=a800000.dwc3 \
-    sys.usb.rndis.func.name=rndis_bam \
-    sys.usb.rmnet.func.name=rmnet_bam
-
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_lavender
 PRODUCT_DEVICE := lavender
-PRODUCT_MANUFACTURER := Xiaomi
+PRODUCT_NAME := omni_lavender
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := Redmi Note 7
+PRODUCT_MANUFACTURER := Xiaomi
 
-TARGET_VENDOR_PRODUCT_NAME := lavender
-TARGET_VENDOR_DEVICE_NAME := lavender
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=lavender PRODUCT_NAME=lavender
+# enable stock zip packages flash
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.secure=1 \
+    ro.adb.secure=0 \
+    ro.allow.mock.location=0 \
+    ro.hardware.keystore=sdm660
+
